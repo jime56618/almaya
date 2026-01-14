@@ -1,0 +1,173 @@
+/* ===============================
+   RESET GLOBAL
+================================ */
+proyectos-page{
+  height: 100%;
+  margin: 0;
+  background-color: #f8f9fa;
+}
+
+/* ===============================
+   VARIABLES
+================================ */
+:root {
+  --primary-color: #FFC311;
+}
+
+/* ===============================
+   CONTENEDOR PRINCIPAL
+================================ */
+.proyectos-container {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding-bottom: 2rem;
+}
+
+/* ===============================
+   MAPA
+================================ */
+.map-container {
+  height: 420px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #dee2e6;
+  background-color: #ffffff;
+}
+
+.leaflet-control-container {
+  font-size: 12px;
+}
+
+/* ===============================
+   TOOLTIP LIMPIO (SIN TARJETA DOBLE)
+================================ */
+.custom-tooltip {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.custom-tooltip::before {
+  display: none !important;
+}
+
+/* ===============================
+   TARJETITA DEL MAPA (UNA SOLA)
+================================ */
+.map-marker {
+  background-color: #ffffff;
+  padding: 8px;
+  border-radius: 10px;
+  width: 130px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  border: 1px solid #e5e5e5;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.map-marker:hover {
+  transform: scale(1.05);
+}
+
+.map-marker.active {
+  border-color: var(--primary-color);
+}
+
+/* IMAGEN SIN FILTROS */
+.map-marker-img {
+  width: 100%;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 6px;
+
+  /* 🔥 QUITAR CUALQUIER FILTRO */
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* TEXTO */
+.map-marker-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #212529;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.map-marker-status {
+  font-size: 0.65rem;
+  text-align: center;
+  color: #6c757d;
+  background-color: #f1f3f5;
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+/* ===============================
+   TARJETAS DE PROYECTOS
+================================ */
+.project-card {
+  cursor: pointer;
+  border-radius: 14px !important;
+  overflow: hidden;
+  background-color: #ffffff !important;
+  border: 1px solid #e5e5e5;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+/* IMAGEN LIMPIA SIN FILTROS */
+.project-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+
+  /* 🔥 ELIMINAR FILTROS */
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* TEXTO */
+.project-card h5,
+.project-card p,
+.project-card small {
+  color: #212529;
+}
+
+/* ===============================
+   BADGES
+================================ */
+.badge.bg-dark,
+.badge.bg-success,
+.badge.bg-warning,
+.badge.bg-danger {
+  color: #ffffff !important;
+}
+
+.badge.bg-light,
+.badge.bg-secondary {
+  color: #212529 !important;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .map-container {
+    height: 320px;
+  }
+
+  .map-marker {
+    width: 110px;
+  }
+
+  .project-card img {
+    height: 180px;
+  }
+}
