@@ -1,0 +1,109 @@
+.armedaFooter {
+  background-color: #000000 !important;
+  padding: 80px 0 30px !important;
+  color: #ffffff !important;
+  font-family: sans-serif;
+}
+
+/* Estilo del Logo */
+.armedaFooter__logoBox {
+  margin-bottom: 25px;
+}
+
+.armedaFooter__img {
+  max-width: 180px; /* Ajusta según el tamaño de tu logo */
+  height: auto;
+  display: block;
+}
+
+/* Títulos en Dorado */
+.armedaFooter__title {
+  color: #deac4a !important;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+
+/* Texto Informativo en Blanco Puro */
+.armedaFooter__text, 
+.armedaFooter__hours,
+.armedaFooter__legal a {
+  color: #ffffff !important;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  text-decoration: none;
+  opacity: 1 !important;
+}
+
+/* Redes Sociales - Iconos Dorados */
+.armedaFooter__socials {
+  display: flex;
+  gap: 26px;
+  
+}
+
+.armedaFooter__socials a {
+  color: #deac4a !important;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #d3ae64;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.armedaFooter__socials a:hover {
+  background-color: #deac4a;
+  color: #000000 !important;
+}
+
+/* Detalles Resaltados */
+.armedaFooter__highlight,
+.armedaFooter__legal .sep {
+  color: #d3ae64 !important;
+  font-weight: 600;
+}
+
+.armedaFooter__hours {
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+/* Grid Layout */
+.armedaFooter__mainGrid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 50px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid rgba(211, 174, 100, 0.2);
+}
+
+.armedaFooter__bottom {
+  padding-top: 30px;
+}
+
+.armedaFooter__legal {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .armedaFooter__mainGrid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .armedaFooter__socials {
+    justify-content: center;
+  }
+  .armedaFooter__img {
+    margin: 0 auto;
+  }
+}

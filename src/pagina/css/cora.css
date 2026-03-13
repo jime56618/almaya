@@ -1,0 +1,725 @@
+/* src/pagina/css/cora.css */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap");
+
+:root{
+  /* ✅ MISMO COLOR QUE VÍA SERENA */
+  --coralta-accent: #f1a245;
+  --coralta-accent2: #e3b149;
+
+  --coralta-dark1: #1a1a1a;
+  --coralta-dark2: #0d0d0d;
+}
+
+.coralta-page{
+  font-family: "Poppins", sans-serif;
+  color: #0f172a;
+  background: #ffffff;
+}
+
+/* Container */
+.coralta-container{
+  width: min(1120px, 92%);
+  margin: 0 auto;
+}
+
+/* Titles & text */
+.coralta-h2{
+  font-size: clamp(1.4rem, 2vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.75rem 0;
+}
+
+.coralta-p{
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Buttons */
+.coralta-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.05rem;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+  user-select: none;
+}
+
+.coralta-btn:active{
+  transform: translateY(1px);
+  opacity: 0.95;
+}
+
+.coralta-btn--primary{
+  background: linear-gradient(135deg, var(--coralta-accent), var(--coralta-accent2));
+  color: #000000;
+  padding: 0.6rem 1.5rem;  /* ✅ igual al look del hero original */
+  border-radius: 50px;
+  font-weight: 600;
+}
+
+.coralta-btn--primary:hover{
+  filter: brightness(1.08);
+  transform: scale(1.05);
+}
+
+.coralta-btn--ghost{
+  border: 1px solid rgba(255,255,255,0.5);
+  color: #fff;
+  padding: 0.6rem 1.5rem;  /* ✅ igual al hero original */
+  border-radius: 50px;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.coralta-btn--ghost:hover{
+  background: #fff;
+  color: #000;
+}
+
+/* =========================================================
+   HERO (IGUALITO A VÍA SERENA)
+   ========================================================= */
+.coralta-hero{
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.coralta-hero__img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.coralta-hero__overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.70) 0%,
+    rgba(0, 0, 0, 0.30) 100%
+  );
+}
+
+/* ✅ CENTRADO REAL (título/sub/botones/tarjeta) */
+.coralta-hero__content{
+  position: relative;
+  z-index: 2;
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  padding: 3rem 0;
+  color: #ffffff;
+
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.coralta-hero__kicker{
+  margin: 0 0 1.5rem;
+  letter-spacing: 0.25em;
+  font-weight: 400;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+
+.coralta-hero__title{
+  margin: 0 0 1.5rem;
+  font-size: clamp(3.5rem, 9vw, 6rem); /* ✅ igualito al “feeling” de Vía Serena */
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+/* ✅ palabra acento (misma vibra que Vía Serena) */
+.coralta-txt-accent{
+  color: var(--coralta-accent);
+}
+
+.coralta-hero__subtitle{
+  max-width: 720px;     /* más ancho para que no se corte raro */
+  margin-left: auto;    /* fuerza centrado */
+  margin-right: auto;
+  text-align: center;   /* por si alguna regla lo pisa */
+  text-wrap: balance;   /* centra visualmente las líneas (Chrome/Edge modernos) */
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+}
+
+/* ✅ mismo espacio antes de la tarjeta */
+.coralta-hero__ctaRow{
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 6rem;     /* ✅ igual a Vía Serena */
+  justify-content: center; /* ✅ centra botones */
+  align-items: center;
+}
+
+/* Tarjeta (igual forma/posición/animación) */
+.coralta-hero__info-card{
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+
+  padding: 1.5rem 2.5rem;
+  border-radius: 0 40px 0 0;               /* ✅ igual */
+  border-left: 4px solid var(--coralta-accent);
+
+  width: fit-content;                       /* ✅ igual */
+  max-width: min(900px, 92vw);
+
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: coraltaCardIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+}
+
+.coralta-card__icon{
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.coralta-card__title{
+  margin: 0 0 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  opacity: 0.6;
+}
+
+/* ✅ grid de bullets igualito al look de Vía Serena */
+.coralta-card__grid{
+  display: flex;
+  gap: 1.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.coralta-dot{
+  color: var(--coralta-accent);
+}
+
+@keyframes coraltaCardIn{
+  to{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px){
+  .coralta-hero__ctaRow{
+    flex-direction: column;
+    margin-bottom: 3rem; /* igual al responsive original */
+    width: 100%;
+  }
+  .coralta-btn{
+    width: 100%;
+    justify-content: center;
+  }
+  .coralta-card__grid{
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  .coralta-hero__info-card{
+    border-radius: 20px;
+    width: 90%;
+    padding: 1.2rem;
+  }
+}
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+.coralta-section--intro{
+  padding: 80px 0 60px 0;
+  background: #ffffff;
+  text-align: left;
+}
+
+.coralta-section--intro .coralta-h2{
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.coralta-section--intro .coralta-p{
+  font-size: 1.1rem;
+  color: #444;
+  max-width: 760px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   LOCATION (DARK)
+   ========================================================= */
+.coralta-location--dark{
+  padding: 100px 0;
+  background: radial-gradient(circle at 80% 50%, var(--coralta-dark1) 0%, var(--coralta-dark2) 100%) !important;
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.coralta-location--dark::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.coralta-container-location{
+  position: relative;
+  z-index: 2;
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.coralta-location__title{
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.coralta-hl{
+  background: linear-gradient(135deg, var(--coralta-accent), var(--coralta-accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.coralta-location__p{
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #d1d1d1;
+  margin-bottom: 35px;
+  max-width: 520px;
+}
+
+.coralta-location__list{
+  list-style: none;
+  padding: 0;
+  margin-bottom: 45px;
+}
+
+.coralta-location__list li{
+  margin-bottom: 15px;
+  padding-left: 30px;
+  position: relative;
+  font-size: 1rem;
+  color: #b0b0b0;
+}
+
+.coralta-location__list li::before{
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--coralta-accent);
+  font-weight: bold;
+}
+
+.coralta-btn-maps{
+  background: linear-gradient(135deg, var(--coralta-accent), var(--coralta-accent2));
+  color: #000;
+  padding: 18px 40px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.coralta-btn-maps:hover{
+  transform: translateY(-5px);
+  background: #ffffff;
+}
+
+.coralta-map__frame.coralta-premium--shadow{
+  height: 380px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(241, 162, 69, 0.30);
+  box-shadow: 0 0 40px rgba(241, 162, 69, 0.10);
+}
+
+.coralta-dark-map .leaflet-tile-container{
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+.leaflet-tooltip{
+  background: linear-gradient(135deg, var(--coralta-accent), var(--coralta-accent2)) !important;
+  color: #000 !important;
+  border: none !important;
+  font-weight: bold !important;
+  border-radius: 2px !important;
+}
+
+@media (max-width: 900px){
+  .coralta-container-location{
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .coralta-location__title{ font-size: 2.5rem; }
+  .coralta-map__frame.coralta-premium--shadow{ height: 350px; }
+}
+
+/* =========================================================
+   INFRA
+   ========================================================= */
+.coralta-infra-section{
+  background: #fcfcfc;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+}
+
+.coralta-infra-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+
+.coralta-infra-col-img{
+  height: 100%;
+  min-height: 600px;
+}
+
+.coralta-infra-full-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.coralta-infra-col-text{
+  padding: 80px 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.coralta-infra-title{
+  font-size: 2.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  line-height: 1.1;
+}
+
+.coralta-infra-hl{
+  background: linear-gradient(135deg, var(--coralta-accent), var(--coralta-accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.coralta-infra-line-divider{
+  width: 60px;
+  height: 4px;
+  background: var(--coralta-accent);
+  margin: 20px 0 45px 0;
+}
+
+.coralta-infra-list{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.coralta-infra-item{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: white;
+  padding: 22px 28px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.7s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.coralta-active-animation .coralta-infra-item{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.coralta-infra-icon-box{
+  font-size: 1.8rem;
+  color: var(--coralta-accent);
+  display: flex;
+}
+
+.coralta-infra-label{
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+@media (max-width: 900px){
+  .coralta-infra-grid{ grid-template-columns: 1fr; }
+  .coralta-infra-col-img{ height: 400px; order: 2; min-height: auto; }
+  .coralta-infra-col-text{ order: 1; padding: 60px 5%; text-align: center; }
+  .coralta-infra-line-divider{ margin: 15px auto 30px auto; }
+}
+
+/* =========================================================
+   PATH
+   ========================================================= */
+.coralta-path-container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.coralta-path-header{
+  text-align: center;
+  margin: 0 auto 80px auto;
+  padding-top: 60px;
+  max-width: 800px;
+}
+
+.coralta-path-h2{
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.coralta-path-alt{
+  background: linear-gradient(135deg, var(--coralta-accent), var(--coralta-accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--coralta-accent);
+}
+
+.coralta-path-muted{
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.coralta-path-wrapper{
+  position: relative;
+  padding: 100px 0;
+}
+
+.coralta-path-svg{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: auto;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.coralta-path-svg path{
+  transition: stroke-dashoffset 2s ease-in-out;
+}
+
+.coralta-path-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+  z-index: 2;
+}
+
+.coralta-path-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.coralta-is-active .coralta-path-item{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delays */
+.coralta-is-active .coralta-item-1{ transition-delay: 0.2s; }
+.coralta-is-active .coralta-item-2{ transition-delay: 0.5s; }
+.coralta-is-active .coralta-item-3{ transition-delay: 0.8s; }
+.coralta-is-active .coralta-item-4{ transition-delay: 1.1s; }
+
+.coralta-path-dot{
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--coralta-accent), var(--coralta-accent2));
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 6px solid white;
+  box-shadow: 0 4px 15px rgba(241, 162, 69, 0.35);
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.coralta-path-number{
+  color: white;
+  font-weight: 900;
+  font-size: 0.9rem;
+}
+
+.coralta-item-1, .coralta-item-3{ margin-top: -120px; }
+.coralta-item-2, .coralta-item-4{ margin-top: 120px; }
+
+.coralta-path-card{
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+  width: 220px;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.coralta-path-card:hover{
+  transform: translateY(-10px);
+}
+
+.coralta-path-icon{
+  font-size: 2rem;
+  color: var(--coralta-accent);
+  margin-bottom: 15px;
+}
+
+.coralta-path-card-title{
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.coralta-path-card-desc{
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+@media (max-width: 1024px){
+  .coralta-path-svg{ display: none; }
+  .coralta-path-grid{ grid-template-columns: 1fr 1fr; gap: 40px; }
+  .coralta-item-1, .coralta-item-2, .coralta-item-3, .coralta-item-4{ margin-top: 0; }
+  .coralta-path-card{ width: 100%; }
+}
+
+@media (max-width: 600px){
+  .coralta-path-grid{ grid-template-columns: 1fr; }
+  .coralta-path-h2{ font-size: 2.2rem; }
+}
+
+/* =========================================================
+   MASTER BG
+   ========================================================= */
+.coralta-master-bg-section{
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.coralta-master-columns{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  z-index: 0;
+}
+
+.coralta-master-col{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.coralta-master-col img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.82);
+}
+
+.coralta-master-bg-overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.75));
+  z-index: 1;
+}
+
+.coralta-master-bg-content{
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 40px;
+  color: white;
+}
+
+.coralta-master-bg-kicker{
+  margin: 0 0 10px;
+  letter-spacing: 0.3em;
+  opacity: 0.85;
+}
+
+.coralta-master-bg-title{
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+@media (max-width: 900px){
+  .coralta-master-columns{ grid-template-columns: 1fr; }
+  .coralta-master-col:nth-child(2),
+  .coralta-master-col:nth-child(3){ display: none; }
+  .coralta-master-bg-section{ height: 60vh; }
+}

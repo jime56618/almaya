@@ -54,221 +54,265 @@
 /* Botón "Invierte Ahora" en Navbar - ANIMACIÓN SIN CAMBIO DE COLOR */
 /* BOTÓN FIJO - Texto SIEMPRE negro, fondo SIEMPRE amarillo */
 .navbar-invest-btn {
-  background-color: #FFC311 !important;
-  color: #000000 !important;
+  background: none !important;
+  /* 1. DEGRADADO PARA EL TEXTO */
+  background: linear-gradient(to right, #d3ae64, #deac4a) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  color: transparent !important;
+
   font-family: "Inter", sans-serif;
   font-weight: 700 !important;
   padding: 10px 28px !important;
   border-radius: 40px;
-  border: none;
+  border: none !important;
   font-size: 0.9rem;
   cursor: pointer;
   margin-left: 15px;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-}
-/* =====================================================
-   OPCIÓN 4 - BRILLO EN EL BORDE
-===================================================== */
-
-.navbar-invest-btn {
-  background-color: #FFC311;
-  color: #000000;
-  font-family: "Inter", sans-serif;
-  font-weight: 700;
-  padding: 10px 28px;
-  border-radius: 40px;
-  border: 2px solid #FFC311; /* Mismo color que fondo */
-  font-size: 0.9rem;
-  cursor: pointer;
-  margin-left: 15px;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  display: inline-block;
-  text-align: center;
   position: relative;
-  overflow: hidden;
+  z-index: 1;
+  display: inline-block;
+  /* Transición suave para el cambio de color de texto */
+  transition: all 0.3s ease !important;
 }
 
-.navbar-invest-btn:hover {
-  /* MANTIENE COLOR */
-  background-color: #FFC311;
-  color: #000000;
-}
-
-/* Efecto de brillo que recorre el borde */
+/* 2. DEGRADADO PARA EL BORDE */
 .navbar-invest-btn::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
-  transition: left 0.7s ease;
+  inset: 0; 
+  border-radius: 40px; 
+  padding: 2px;
+  background: linear-gradient(to right, #d3ae64, #deac4a); 
+  -webkit-mask: 
+     linear-gradient(#fff 0 0) content-box, 
+     linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude; 
+  z-index: -1;
+  /* Transición suave para el borde */
+  transition: all 0.3s ease;
+}
+
+/* 3. EFECTO HOVER (Relleno y cambio de texto) */
+.navbar-invest-btn:hover {
+  /* Quitamos el clip del texto para que el color sea sólido */
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: #000000 !important; /* Texto negro para contraste */
+  background: linear-gradient(to right, #d3ae64, #deac4a) !important;
+  color: #000000 !important;
+ 
 }
 
 .navbar-invest-btn:hover::before {
-  left: 100%;
+  /* Ocultamos el borde mask porque el fondo ya cubre todo */
+  opacity: 0;
 }
+
 
 /* =====================================================
-   HERO / CAROUSEL - INDICADORES CORREGIDOS
+   HERO SECTION - IMAGEN FIJA ESTILO INMOBILIARIA
 ===================================================== */
-
-.home-hero {
+/* HERO SECTION CON CURVA INFERIOR - ESTILO COMO EL EJEMPLO */
+/* HERO SECTION - Ajuste de tamaño para ver la foto completa */
+.home-hero-container {
   position: relative;
-}
-
-.home-carousel {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Imagen - MÁS CORTA (70vh en lugar de 100vh) */
-.home-carousel-img {
-  height: 90vh; /* ⬅⬅⬅ CAMBIADO AQUÍ ⬅⬅⬅ */
   width: 100%;
+  /* Aumentamos el alto para que la foto respire */
+  height: 100vh; /* Volvemos a la altura de la ventana (o 750px por ejemplo) */
+  min-height: 750px; 
+  overflow: hidden;
+  background-color: #000;
+}
+
+.home-hero-img {
+  width: 100%;
+  height: 100%;
+  /* 'contain' mostraría toda la foto pero deja bordes negros. 
+     Usamos 'cover' con 'top' para asegurar que no se corten las cabezas. */
   object-fit: cover;
+  object-position: top center; 
+  display: block;
 }
 
-
-/* Overlay */
-.home-carousel-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* Contenido - SIN ANIMACIÓN */
-.home-carousel-content {
+/* Ajuste del contenido para que baje con el nuevo tamaño */
+.home-hero-content {
   position: absolute;
   inset: 0;
   z-index: 2;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end; 
   align-items: center;
-  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 0 24px;
-  opacity: 1 !important;
-  transform: none !important;
+  /* Con 120vh de alto, necesitamos un padding mayor para 
+     que el texto se quede sobre el pecho/cintura de los modelos */
+  padding-bottom: 120px;
+  text-align: center;
 }
 
-/* Título */
-.home-carousel-title {
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-size: clamp(2.2rem, 4vw, 3.5rem); /* Más pequeño */
-  color: #ffffff;
-  white-space: nowrap; /* No se parte en líneas */
-  overflow: hidden; /* Por si acaso */
-  line-height: 1;
-  margin-bottom: 15px;
-  text-transform: uppercase;
-  letter-spacing: 0.8px; /* Más espacio entre letras */
-  padding: 0 20px; /* Padding para que no toque bordes */
-  
-}
-
-/* Subtítulo */
-.home-carousel-subtitle {
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-size: clamp(1.05rem, 2vw, 1.3rem);
-  color: #e5e5e5;
-  max-width: 620px;
-  margin-bottom: 42px;
-}
-
-/* TODOS LOS BOTONES DEL CARRUSEL EN AMARILLO #FFC311 */
-.home-carousel-btn {
-  background-color: #FFC311;
-  color: #000000;
-  font-family: "Inter", sans-serif;
+.home-hero-title {
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
-  padding: 14px 44px;
-  border-radius: 40px;
+  font-size: 3rem;
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  text-transform: uppercase;
+  width: 100%;
+  position: relative;
+  display: table;
+  margin: 0 auto 30px auto;
+  text-align: center;
+  padding-bottom: 15px;
+
+  /* TRUCO PARA EL DEGRADADO EN EL TEXTO */
+  background: linear-gradient(to bottom, #ffffff 0%, #a6a6a6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; /* Fallback */
+}
+.home-hero-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;    /* Ahora ocupa el 100% del ancho del texto */
+  height: 1.5px;  /* Grosor fino y elegante */
+  background-color: rgba(255, 255, 255, 0.8); /* Blanco con un toque de transparencia */
+}
+.hero-title-highlight {
+   font-weight: 400;/* mismo amarillo de botones */
+
+}
+
+.home-hero-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #d1d1d1;
+  max-width: 600px;        /* Un poco más ancho para que luzca mejor centrado */
+  margin: 0 auto 36px auto;
+}
+
+.home-hero-btn {
+  position: relative;
+  background: transparent !important;
+  /* 1. TEXTO DEGRADADO INICIAL */
+  background: linear-gradient(to right, #d3ae64, #deac4a) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  color: transparent !important;
+
+  padding: 14px 36px;
+  border-radius: 30px;
   border: none;
-  font-size: 1rem;
+  z-index: 1;
+  font-weight: 600;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.home-carousel-btn:hover {
-  background-color: #ffd03a;
-  transform: translateY(-3px);
-}
-
-/* =====================================================
-   INDICADORES DEL CARRUSEL - FIX PARA BOOTSTRAP
-===================================================== */
-
-/* IMPORTANTE: Sobreescribir Bootstrap completamente */
-#homeCarousel .carousel-indicators {
-  position: absolute !important;
-  bottom: 30px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  gap: 12px !important;
-  z-index: 6 !important;
-}
-
-/* Indicadores individuales */
-#homeCarousel .carousel-indicators [data-bs-target] {
-  width: 40px !important;
-  height: 3px !important;
-  background-color: rgba(255, 255, 255, 0.4) !important;
-  border: none !important;
-  opacity: 1 !important;
-  margin: 0 !important;
-  border-radius: 0 !important;
-  text-indent: -9999px !important;
-  flex-shrink: 0 !important;
+  /* Transición para que el efecto sea suave */
   transition: all 0.3s ease !important;
-  cursor: pointer !important;
 }
 
-/* Indicador activo - IMPORTANTE: usar !important */
-#homeCarousel .carousel-indicators .active {
-  background-color: #FFC311 !important;
-  width: 50px !important;
+/* 2. BORDE CON PSEUDO-ELEMENTO */
+.home-hero-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0; 
+  border-radius: 30px; 
+  padding: 2px;
+  background: linear-gradient(to right, #d3ae64, #deac4a); 
+  -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude; 
+  z-index: -1;
+  transition: opacity 0.3s ease;
 }
 
-/* Hover en indicadores */
-#homeCarousel .carousel-indicators [data-bs-target]:hover {
-  background-color: rgba(255, 255, 255, 0.7) !important;
+/* 3. EFECTO HOVER: RELLENO DORADO */
+.home-hero-btn:hover {
+  /* Al rellenar, el texto debe ser sólido (negro o blanco) para que se lea */
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: #000000 !important; 
+  background: linear-gradient(to right, #d3ae64, #deac4a) !important;
+  color: #000000 !important;
+  
+  /* Sutil sombra para dar profundidad al resaltar */
+
+  transform: translateY(-2px); /* Pequeño salto hacia arriba */
 }
 
-/* =====================================================
-   REMOVER FLECHAS DE NAVEGACIÓN
-===================================================== */
-
-.home-carousel .carousel-control-prev,
-.home-carousel .carousel-control-next {
-  display: none !important;
+.home-hero-btn:hover::before {
+  /* Ocultamos el borde mask porque el botón ya tiene el fondo sólido */
+  opacity: 0;
 }
 
-/* =====================================================
-   REMOVER ANIMACIÓN DEL TEXTO
-===================================================== */
 
-.home-carousel .carousel-item .home-carousel-content {
-  opacity: 1 !important;
-  transform: none !important;
-  transition: none !important;
+
+
+
+
+/* ================================================
+   RESPONSIVE
+================================================ */
+
+@media (max-width: 768px) {
+  .home-hero-content {
+    padding-left: 24px;
+    padding-right: 24px;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 80px; /* Menos espacio en móvil */
+  }
+
+  .home-hero-title,
+  .home-hero-subtitle {
+    max-width: 100%;
+  }
+  
+  .home-hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .home-hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  /* Curva más pequeña en móviles */
+  .home-hero-curve {
+    height: 80px;
+  }
+  
+  .home-hero-curve-css {
+    height: 70px;
+    border-radius: 40% 40% 0 0 / 40px 40px 0 0;
+  }
+  
+  .home-hero-curve-suave {
+    height: 90px;
+    border-radius: 20% 20% 0 0 / 30px 30px 0 0;
+  }
+}
+
+/* Para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .home-hero-content {
+    padding-left: 5%;
+  }
+  
+  .home-hero-title {
+    font-size: 3.2rem;
+  }
 }
 
 /* =====================================================
@@ -452,7 +496,32 @@ html {
 }
 
 /* Estilos para la sección About Company (Nosotros) */
+#nosotros {
+  /* Creamos un degradado radial */
+  /* El primer color es el punto de luz, el segundo es el fondo oscuro */
+  background: radial-gradient(
+    circle at 80% 50%, 
+    #1a1a1a 0%, 
+    #0d0d0d 100%
+  ) !important;
+  
+  /* Opcional: Añade un toque de suavidad */
+  position: relative;
+  overflow: hidden;
+}
 
+/* Efecto de "Reflejo" extra para que se vea idéntico a la imagen */
+#nosotros::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'); /* Textura sutil */
+  opacity: 0.05;
+  pointer-events: none;
+}
 #nosotros .about-company-title {
   text-align: left;
 }
@@ -461,7 +530,9 @@ html {
   max-width: 1200px;
   margin: 0 auto;
   padding: 80px 20px 80px 20px; /* Reducido el padding superior a 40px */
+  margin-top: -10px; 
 }
+
 
 /* Layout de dos columnas */
 .about-layout {
@@ -478,19 +549,49 @@ html {
 }
 
 .about-company-title {
+  font-family: "Inter", sans-serif !important;
   font-size: 2.4rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 18px;
+  font-weight: 400 !important;
+  background: linear-gradient(to bottom, #ffffff 0%, #a6a6a6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 30px; /* Aumentado para dar espacio a la línea */
   letter-spacing: 0.5px;
   line-height: 1.1;
   text-transform: uppercase;
   text-align: left;
+  
+  white-space: nowrap; 
+  display: inline-block; /* Cambiado a inline-block para que el ancho sea exacto al texto */
+  position: relative; /* Necesario para posicionar la línea */
+}
+
+/* La línea debajo del título */
+.about-company-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px; /* Espacio entre el texto y la línea */
+  width: 100%; /* Cubre exactamente el ancho del texto */
+  height: 1px; /* Grosor de la línea */
+  background: rgba(255, 255, 255, 0.4); /* Blanco con transparencia para que sea elegante */
+}
+
+/* Ajuste del layout */
+.about-left {
+  flex: 1.2;
+  min-width: 450px;
 }
 
 .about-company-description {
   font-size: 1.15rem;
-  color: #666;
+  background: linear-gradient(to bottom, #ffffff 0%, #a6a6a6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; /* Fallback */
   line-height: 1.7;
 }
 /* Columna derecha - Estadísticas */
@@ -505,17 +606,40 @@ html {
 }
 
 .stat-card {
-  text-align: center;
-  padding: 25px 15px; /* Reducido el padding */
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  min-height: 150px; /* Altura mínima reducida */
+  align-items: center;
+  justify-content: flex-start; /* Alinea el contenido al principio */
+  padding: 20px;
+  text-align: center;
+}
+
+/* Contenedor del número para control total */
+.stat-number {
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1; /* Crucial para que no haya aire extra */
+  margin-bottom: 10px;
+  display: inline-block;
+  background: linear-gradient(to right, #d3ae64, #deac4a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* La línea vertical corregida */
+.stat-card:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  
+  /* Ajuste manual según tu diseño */
+  top: 25px;       /* Baja la línea para que empiece con el número */
+  height: 50px;    /* Altura visual de tus números (ajusta si es necesario) */
+  
+  width: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  z-index: 1;
 }
 
 .stat-card:hover {
@@ -523,18 +647,17 @@ html {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-.stat-number {
-  font-size: 3rem; /* Reducido ligeramente */
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 10px;
-  line-height: 1;
-}
+
 
 .stat-label {
+  font-family: "Inter", sans-serif; /* Nueva tipografía aplicada */
   font-size: 0.95rem;
-  color: #666;
+  color: #FFFFFF;
   line-height: 1.4;
+  font-weight: 400;
+  max-width:360px;
+  min-height: 44px; 
+  align-items: center;
 }
 
 /* Estilos específicos para el home-section si es necesario */
@@ -625,76 +748,73 @@ html {
   width: 100%;
 }
 
-/* Estilos para el botón transparente */
 .about-transparent-btn {
-  padding: 12px 35px;
-  background-color: transparent;
-  color: #333;
-  border: 2px solid #333;
+  padding: 14px 40px;
+  background: transparent !important;
+  
+  /* Reset crucial para quitar el contorno gris */
+  border: none !important; 
+  outline: none !important;
+  box-shadow: none !important;
+
+  /* Texto Degradado */
+  background: linear-gradient(to right, #d3ae64, #deac4a) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  color: transparent !important;
+
   border-radius: 50px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease !important;
   text-decoration: none;
   position: relative;
-  overflow: hidden;
-  min-width: 180px;
+  min-width: 200px;
+  display: inline-block;
+  text-align: center;
+  z-index: 1;
 }
 
-.about-transparent-btn:hover {
-  background-color: #FFC311;
-  color: #000;
-  border-color: #FFC311;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(255, 195, 17, 0.2);
-}
-
-.about-transparent-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 5px rgba(255, 195, 17, 0.2);
-}
-
-/* Si quieres un efecto más sofisticado con animación */
+/* El pseudo-elemento se mantiene igual */
 .about-transparent-btn::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s ease;
+  inset: 0; 
+  border-radius: 50px; 
+  padding: 2px; 
+  background: linear-gradient(to right, #d3ae64, #deac4a); 
+  -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude; 
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+/* 3. HOVER: RELLENO COMPLETO */
+.about-transparent-btn:hover {
+  /* Al rellenar, el texto pasa a negro */
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: #000000 !important; 
+  background: linear-gradient(to right, #d3ae64, #deac4a) !important;
+  color: #000000 !important;
+  
+  transform: translateY(-3px);
+  
 }
 
 .about-transparent-btn:hover::before {
-  left: 100%;
+  opacity: 0; /* Ocultamos el borde mask cuando se rellena */
 }
 
-/* Responsive para el botón */
-@media (max-width: 992px) {
-  .about-btn-container {
-    justify-content: flex-start; /* En móvil puede alinearse a la izquierda */
-  }
+.about-transparent-btn:active {
+  transform: translateY(-1px);
   
-  .about-transparent-btn {
-    padding: 10px 25px;
-    font-size: 0.9rem;
-    min-width: 160px;
-  }
-}
-
-@media (max-width: 576px) {
-  .about-btn-container {
-    justify-content: center; /* En móvil pequeño se centra */
-  }
-  
-  .about-transparent-btn {
-    width: 100%;
-    max-width: 250px;
-  }
 }
 
 /* ACORDEÓN DE IMÁGENES - SIN TEXTOS */
@@ -783,76 +903,1654 @@ html {
   }
 }
 
-/*estilos de propiedades*/
+/* ============================================================
+   PARCHE DE ADAPTABILIDAD (RESPONSIVE FIX)
+   ============================================================ */
 
-/* SECCIÓN PROYECTOS */
-.home-section #proyectos,
+/* 1. Reset Global para evitar desbordamientos */
+#nosotros, .nosotros-container, .about-layout {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+}
+
+/* 2. Corrección de la columna de texto (Evita que se salga de la pantalla) */
+.about-left {
+    min-width: unset !important; /* Quita el ancho fijo que rompe el móvil */
+    max-width: 100% !important;
+    flex: unset !important;
+}
+
+/* 3. Título Adaptativo */
+.about-company-title {
+    white-space: normal !important; /* Permite que el texto salte de línea */
+    font-size: clamp(1.8rem, 8vw, 2.4rem) !important; /* Tamaño fluido */
+    display: block !important;
+    width: fit-content !important;
+}
+
+/* 4. Estadísticas Fluídas */
+.stat-number {
+    font-size: clamp(2rem, 10vw, 4.5rem) !important;
+}
+
+.company-stats {
+    gap: 10px !important;
+}
+
+/* 5. MEDIA QUERIES DE AJUSTE (EL PARCHE MÁGICO) */
+
+/* Pantallas medianas (Tablets) */
+@media (max-width: 992px) {
+    .about-layout {
+        grid-template-columns: 1fr !important; /* Una sola columna */
+        text-align: center !important;
+    }
+    
+    .about-company-title {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .about-company-title::after {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .about-btn-container {
+        justify-content: center !important;
+    }
+
+    .stat-card:not(:last-child)::after {
+        display: none !important; /* Quita líneas divisorias verticales */
+    }
+}
+
+/* Pantallas pequeñas (Móviles) */
+@media (max-width: 768px) {
+    .nosotros-container {
+        padding: 40px 15px !important; /* Menos espacio arriba/abajo */
+    }
+
+    .company-stats {
+        grid-template-columns: 1fr !important; /* Stats en lista vertical */
+        gap: 20px !important;
+    }
+
+    .stat-card {
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 15px;
+    }
+
+    .stat-card:last-child {
+        border-bottom: none;
+    }
+
+    /* Acordeón en móvil */
+    .accordion-images {
+        flex-direction: column !important;
+        height: auto !important;
+    }
+
+    .accordion-item {
+        height: 150px !important;
+        width: 100% !important;
+    }
+}
+
+/* Corrección de espacios gigantes */
+.nosotros-container {
+    margin-top: 0 !important;
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+}
+
+/* ============================================================
+   SECCIÓN PROYECTOS - CÓDIGO COMPLETO (ANTI-CHOQUE)
+   ============================================================ */
+
 .proyectos-section {
+ padding: 100px 0;
+ font-family: 'Poppins', sans-serif;
+ overflow: hidden;
+ background-color: #f3f3f3; 
+ background-image: 
+    radial-gradient(circle, rgba(0,0,0,0.03) 1px, transparent 1px), 
+    radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px; 
+  background-position: 0 0, 2px 2px;
+}
 
-  background-color: #0D0D0D !important;
-  padding-top: 40px !important; /* Reducido significativamente */
-  padding-bottom: 80px;
-  margin-top: 0 !important;
+.container-proyectos {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* GRID REAJUSTADO: 
+   Aumentamos el gap a 30px y ajustamos la proporción a 1.4fr 
+   para que el texto tenga su propio aire y no choque.
+*/
+.proyectos-grid-collage {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr; 
+  grid-auto-rows: 230px; 
+  gap: 30px;
+  grid-template-areas: 
+    "info img1 img2"
+    "info img1 img3"
+    "img4 img4 img3";
+}
+
+/* --- BLOQUE DE TEXTO IZQUIERDO --- */
+.proyectos-info-block {
+  grid-area: info;
+  display: flex;
+  align-items: flex-start;
+  padding-right: 40px; /* Margen de seguridad para que el texto no toque las fotos */
+}
+
+.info-sticky {
+  position: sticky;
+  top: 40px; /* Ajustado para que no choque con el techo al scrollear */
+  text-align: left;
+  width: 100%;
+}
+
+.info-tag {
+  display: inline-block;
+  /* Degradado de fondo metálico */
+  background: linear-gradient(135deg, #a6a6a6 0%, #ffffff 100%) !important;
+  
+  /* Color de texto oscuro para que contraste con el fondo claro */
+  color: #1a1a1a !important; 
+  
+  padding: 6px 14px;
+  font-family: "Inter", sans-serif !important; /* Fuente Inter aplicada */
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  
+  /* Toque extra: sutil sombra para dar relieve */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .proyectos-titulo {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #FFC311  !important;
-  margin-bottom: 20px;
+  font-family: "Inter", sans-serif !important;
+  font-size: 3.5rem; 
+  line-height: 1.0;
+  margin: 0 0 25px 0;
+  text-align: left !important; 
+  display: flex;         /* Cambiamos a flex para controlar mejor las líneas */
+  flex-direction: column; 
+  width: 100%;
+  text-transform: uppercase;
+  /* Eliminamos el letter-spacing negativo global que causa el desfase */
+  letter-spacing: 0; 
+}
+
+/* "Conoce nuestros" */
+.titulo-light {
+  font-weight: 400;
+  background: linear-gradient(to bottom, #737373 0%, #000000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  /* Si quieres mantener el efecto compacto, usa un valor menor */
+  letter-spacing: -0.5px; 
+}
+
+/* "Proyectos Destacados" */
+.titulo-bold {
+  font-weight: 800;
+  color: #000000;
+  margin-left: 0; /* Aseguramos que no haya margen extra */
+  letter-spacing: -1px; /* Un poco menos agresivo para no desalinear */
+}
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 768px) {
+  .proyectos-titulo {
+    font-size: 2.5rem;
+    letter-spacing: -1px;
+  }
 }
 
 .proyectos-subtitulo {
-  text-align: center;
-  font-size: 1.1rem;
-  color: #ffffff !important;
-  max-width: 700px;
-  margin: 0 auto 50px;
+  font-size: 1.1rem; 
+  color: #555;
+  line-height: 1.5;
+  max-width: 420px; /* Limita el ancho del párrafo para que no se acerque a las imágenes */
+  font-weight: 400;
+  margin: 0;
+}
+
+/* --- TARJETAS DE PROYECTO --- */
+.proyecto-card {
+  position: relative;
+  border-radius: 25px; /* Bordes redondeados premium como en las capturas */
+  overflow: hidden;
+  background-color: #f8f8f8;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.proyecto-card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.proyecto-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: #f4f4f4;
+}
+
+
+/* Áreas del Grid */
+.card-large { grid-area: img1; }
+.card-top-right { grid-area: img2; }
+.card-vertical-right { grid-area: img3; }
+.card-wide { grid-area: img4; }
+
+/* Overlay con degradado para lectura clara */
+.proyecto-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top, 
+    rgba(0, 0, 0, 0.85) 0%, 
+    rgba(0, 0, 0, 0.3) 40%,
+    transparent 100%
+  );
+  display: none;
+  align-items: flex-end;
+  padding: 30px;
+}
+
+.proyecto-data {
+  color: #ffffff;
+}
+
+.proyecto-nombre {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.proyecto-desc {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.9) !important;
+  line-height: 1.4;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1200px) {
+  .proyectos-grid-collage {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+      "info info"
+      "img1 img2"
+      "img1 img3"
+      "img4 img4";
+    grid-auto-rows: 200px;
+    gap: 20px;
+  }
+  .proyectos-info-block { padding-right: 0; margin-bottom: 30px; }
+  .proyectos-titulo { font-size: 2.8rem; }
+}
+
+@media (max-width: 768px) {
+  .proyectos-grid-collage {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .proyecto-card { height: 350px; }
+  .proyectos-titulo { font-size: 2.5rem; }
+}
+
+/* CONTENEDOR */
+.proyectos-switch {
+  margin: 24px 0 10px;
+}
+
+/* PILL BASE */
+.switch-pill {
+  position: relative;
+  display: flex;
+  background: #ebebeb;
+  border-radius: 50px;
+  padding: 6px;
+  width: fit-content;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* FONDO DESLIZANTE */
+.switch-pill::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: calc(50% - 6px);
+  height: calc(100% - 12px);
+  background: linear-gradient(135deg, #d3ae64 0%, #deac4a 100%);
+  border-radius: 40px;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+  transform: translateX(0); /* Posición inicial: Terrenos (izquierda) */
+}
+
+/* POSICIÓN SEGÚN ESTADO */
+.switch-pill.vivir::before {
+  transform: translateX(100%);
+}
+
+/* BOTONES */
+.switch-option {
+  position: relative;
+  z-index: 1; /* Por encima de la burbuja para recibir el click */
+  background: transparent !important;
+  border: none !important;
+  padding: 10px 25px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+  transition: color 0.3s ease;
+  outline: none !important;
+}
+/* ACTIVO */
+.switch-option.active {
+  color: #000; /* Color de texto cuando está seleccionado */
+}
+
+
+/* CTA tipo link - sección proyectos */
+.proyectos-cta-btn {
+  margin-top: 22px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px; /* espacio entre flecha y texto */
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+/* 
+.proyectos-cta-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background-color: #1a1a1a;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+/* Hover */
+.proyectos-cta-btn:hover {
+  color: #000;
+}
+
+.proyectos-cta-btn:hover::after {
+  transform: scaleX(1);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .proyectos-cta-btn {
+    font-size: 1rem;
+  }
+}
+
+
+/* ===== PROCESO SECTION ===== */
+/* ===== PROCESO (DARK) ===== */
+.proceso-section{
+  padding: 90px 0;
+  background: radial-gradient(
+    circle at 80% 50%, 
+    #1a1a1a 0%, 
+    #0d0d0d 100%
+  ) !important;
+  
+  /* Opcional: Añade un toque de suavidad */
+  position: relative;
+  overflow: hidden;
+}
+
+#proceso::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'); /* Textura sutil */
+  opacity: 0.05;
+  pointer-events: none;
+}
+.proceso-container{
+  max-width: 1200px;
+}
+
+/* grid: imagen izq, info der */
+.proceso-grid{
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 56px;
+  align-items: center;
+}
+
+/* TITULOS */
+.proceso-title{
+  font-size: 1.85rem;     /* más chico */
+  line-height: 1.25;      /* más aire */
+  margin-bottom: 16px;
+  font-weight: 600;       /* menos bold */
+  letter-spacing: -0.01em;
+  font-size: clamp(1.55rem, 2vw, 1.9rem);
+       /* evita que se “estire” y se vea apretado */
+}
+
+/* Amarillo */
+.proceso-title-accent {
+  /* Color de reserva (fallback) */
+  color: #ffffff !important; 
+  font-weight: 600;
+  display: block; 
+  white-space: nowrap;
+
+  /* Efecto de degradado del #a6a6a6 al #ffffff */
+  background: linear-gradient(180deg, #a6a6a6 0%, #ffffff 100%);
+  -webkit-background-clip: text; /* Aplica el fondo solo al texto */
+  -webkit-text-fill-color: transparent; /* Hace el color sólido transparente para mostrar el degradado */
+  
+  /* Opcional: Un ligero resplandor para que no se pierda en fondos claros */
+  text-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Blanco en segunda línea */
+.proceso-title-rest{
+  color: #ffffff !important; 
+  font-weight: 600;
+  white-space: nowrap;
+  display: block;         
+  margin-top: 6px;       
+}
+
+
+
+.proceso-subtitle {
+  font-size: 1.02rem;
   line-height: 1.6;
+  max-width: 560px;
+  /* Centra el bloque del párrafo mismo */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 22px;
+  /* Centra el texto por dentro */
+  text-align: center;
+}
+/* Color para la primera parte: #b4bbb5 */
+.proceso-text-b4 {
+  color: #b4bbb5 !important;
+  display: inline; /* Asegura que no rompa la línea */
 }
 
-/* Si el espacio sigue siendo grande, revisa estos estilos generales: */
-.home-section {
-  padding: 80px 0; /* Este podría ser el culpable */
+/* Color para la segunda parte: #bcbeb7 */
+.proceso-text-bc {
+  color: #bcbeb7 !important;
+  display: inline;
+}
+/* FEATURES 2x2 */
+/* Contenedor de la derecha */
+.proceso-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* Añade esto para forzar menos espacio después de la sección nosotros */
-#nosotros + .home-section {
-  margin-top: -40px !important; /* Sube la siguiente sección */
+/* La lista de features ahora es vertical */
+.proceso-features {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Espacio estrecho entre items para que la línea luzca continua */
+  position: relative;
+  margin-top: 30px;
 }
 
-/* O mejor aún, ajusta el padding-bottom de la sección nosotros */
-#nosotros {
-  padding-bottom: 40px !important; /* Menos espacio abajo */
+/* La línea vertical dorada */
+.proceso-features::before {
+  content: "";
+  position: absolute;
+  left: 17px; /* Centrado con el nodo */
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: linear-gradient(to bottom, #e3b149, #f1a245);
+  z-index: 0;
+}
+
+.proceso-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 12px 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Estructura de círculos concéntricos (Aro exterior + punto interior) */
+.feature-timeline-node {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: transparent; /* Fondo igual al de la sección para tapar la línea */
+  z-index: 2;
+  border-radius: 50%;
+}
+
+.feature-icon-outer {
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid #e3b149; /* Aro dorado exterior */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-icon-inner {
+  width: 10px;
+  height: 10px;
+  background: #f1a245; /* Punto naranja interior */
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(241, 162, 69, 0.4);
+}
+
+/* Texto de la derecha */
+.feature-text h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.feature-text p {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: #b4bbb5; /* Gris suave pedido */
+  line-height: 1.4;
+}
+
+
+
+.proceso-cta-btn{
+  margin-top: 18px;
+  background: none;
+  border: none;
+  padding: 10px 0;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  gap: 12px; 
+}
+
+
+.proceso-cta-btn::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #F5C542; 
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.proceso-cta-btn:hover {
+  /* Cambia al color más naranja en hover */
+  color: #f1a245; 
+  transform: translateX(5px);
+}
+
+.proceso-cta-btn:hover::after {
+  transform: scaleX(1);
+}
+
+/* Ajuste opcional para la flecha del botón */
+.cta-arrow {
+  transition: transform 0.3s ease;
+}
+
+.proceso-cta-btn:hover .cta-arrow {
+  transform: translateX(3px);
+}
+
+/* IMAGEN */
+.proceso-image-wrap{
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 22px 55px rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.proceso-image{
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.05) saturate(1.05);
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .home-section#propiedades,
-  .proyectos-section {
-    padding-top: 30px !important;
-    padding-bottom: 60px;
+@media (max-width: 980px){
+  .proceso-grid{
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
-  
-  .proyectos-titulo {
-    font-size: 2rem;
+
+  .proceso-features{
+    grid-template-columns: 1fr;
   }
-  
-  .proyectos-subtitulo {
-    font-size: 1rem;
-    margin-bottom: 40px;
+
+  .proceso-image{
+    height: 360px;
+  }
+
+  .proceso-title{
+    font-size: 1.9rem;
   }
 }
 
-@media (max-width: 576px) {
-  .home-section#propiedades,
-  .proyectos-section {
-    padding-top: 20px !important;
-    padding-bottom: 50px;
+.cta-arrow{
+  display: inline-block;
+  margin-left: 12px;
+}
+
+.cta-hint .cta-arrow{
+  animation: arrowBounce .8s ease-in-out 3;
+}
+
+@keyframes arrowBounce{
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(8px); }
+  100% { transform: translateX(0); }
+}
+
+
+/* ===== RESPONSIVE PRO PATCH ===== */
+
+/* Espaciado general adaptable */
+.proceso-section{
+  padding: clamp(60px, 8vw, 90px) 0;
+}
+
+/* Grid adaptable */
+.proceso-grid{
+  gap: clamp(24px, 5vw, 56px);
+}
+
+/* Imagen responsive real */
+.proceso-image{
+  height: clamp(260px, 45vw, 520px);
+}
+
+/* Timeline nodos más fluidos */
+.feature-timeline-node{
+  width: clamp(28px, 4vw, 36px);
+  height: clamp(28px, 4vw, 36px);
+}
+
+.feature-icon-outer{
+  width: clamp(22px, 3.2vw, 28px);
+  height: clamp(22px, 3.2vw, 28px);
+}
+
+.feature-icon-inner{
+  width: clamp(8px, 1.5vw, 10px);
+  height: clamp(8px, 1.5vw, 10px);
+}
+
+/* Textos */
+.feature-text h3{
+  font-size: clamp(0.95rem, 1.2vw, 1rem);
+}
+
+.feature-text p{
+  font-size: clamp(0.82rem, 1.1vw, 0.9rem);
+}
+
+/* ===== TABLET ===== */
+@media (max-width: 980px){
+
+  .proceso-grid{
+    grid-template-columns: 1fr;
   }
-  
-  .proyectos-titulo {
-    font-size: 1.8rem;
+
+  .proceso-right{
+    order: 2;
+  }
+
+  .proceso-image-wrap{
+    order: 1;
+  }
+
+  .proceso-subtitle{
+    max-width: 100%;
+    padding: 0 10px;
   }
 }
+
+/* ===== CELULAR GRANDE ===== */
+@media (max-width: 600px){
+
+  .proceso-title{
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .proceso-title-accent,
+  .proceso-title-rest{
+    white-space: normal; /* evita que se rompa el diseño */
+  }
+
+  .proceso-subtitle{
+    font-size: 0.95rem;
+  }
+
+  .proceso-features{
+    margin-top: 20px;
+  }
+
+  .proceso-feature{
+    gap: 14px;
+  }
+}
+
+/* ===== CELULAR PEQUEÑO ===== */
+@media (max-width: 420px){
+
+  .proceso-section{
+    padding: 55px 0;
+  }
+
+  .proceso-title{
+    font-size: 1.4rem;
+  }
+
+  .proceso-subtitle{
+    font-size: 0.9rem;
+  }
+
+  .feature-text h3{
+    font-size: 0.92rem;
+  }
+
+  .feature-text p{
+    font-size: 0.8rem;
+  }
+}
+
+
+/* ==========================================================================
+   SECCIÓN: QUÉ BUSCAS (COMPACTA)
+   ========================================================================== */
+
+.qb-section {
+  padding-top: 45px;        /* ⬅️ más corto */
+  padding-bottom: 18px;     /* ⬅️ sin espacio muerto */
+  background: #ffffff;
+  position: relative;
+
+  /* ✅ CLAVE: quita el 100vh que hereda de .home-section */
+  min-height: auto !important;
+}
+
+.qb-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;               /* ⬅️ menos espacio entre título y botones */
+}
+
+.qb-title-wrap {
+  text-align: center;
+  margin-bottom: 10px;     /* ⬅️ pega más a los botones */
+}
+
+.qb-title {
+  margin: 0;
+  font-size: clamp(2.1rem, 4.2vw, 3rem); /* ⬅️ responsive sin exagerar */
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.qb-title-black {
+  background: linear-gradient(to right, #deac4a, #d3ae64);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.qb-title-yellow {
+  background: linear-gradient(to right, #deac4a, #d3ae64);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: #deac4a; /* Fallback para navegadores antiguos */
+  font-weight: 800;
+}
+
+.qb-underline {
+  width: 420px;
+  height: 1.5px;           
+  background: linear-gradient(to right, #deac4a, #d3ae64);
+  margin: 8px auto 0;      
+  border-radius: 999px;
+  opacity: 0.8;            
+}
+.qb-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 0;        /* Pegado al final de sección */
+}
+
+.qb-btn {
+  background: transparent;
+  border: 2px solid rgba(0,0,0,0.25);
+  color: #111;
+  padding: 18px 0;         /* ⬅️ antes 26px */
+  font-weight: 650;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: 180ms ease;
+  min-width: 300px;        /* ⬅️ antes 340px */
+  font-size: 1.18rem;      /* ⬅️ antes 1.38rem */
+  line-height: 1.1;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estado Normal: Fondo sólido */
+.qb-btn {
+  background-color: #fcfcfc; /* Fondo sólido muy claro */
+  border: 2px solid rgba(0,0,0,0.15);
+  color: #111111;
+  transition: all 0.25s ease;
+}
+
+/* Estado HOVER: El fondo se llena de dorado y el texto sigue negro */
+.qb-btn:hover {
+  background-color: #deac4a; 
+  border-color: #deac4a;
+  color: #000000; /* Letras negras para máximo contraste */
+}
+
+/* Estado SELECCIONADO (Active): Fondo con degradado y texto negro */
+.qb-btn.active {
+  background: linear-gradient(to right, #deac4a, #d3ae64) !important;
+  border-color: #deac4a;
+  color: #000000; /* Letras negras sobre el degradado */
+  font-weight: 800; /* Un poco más de peso para que resalten */
+  box-shadow: 0 4px 15px rgba(222, 172, 74, 0.35);
+}
+
+.qb-hint {
+  margin: 6px 0 0 0 !important;   /* ⬅️ más pegado */
+  text-align: center;
+  font-size: 0.92rem;
+  color: #666;
+}
+
+/* ==========================================================================
+   RESPONSIVE (Móvil)
+   ========================================================================== */
+
+@media (max-width: 720px) {
+  .qb-section {
+    padding-top: 32px;
+    padding-bottom: 14px;
+  }
+
+  .qb-title {
+    font-size: 2.35rem;
+  }
+
+  .qb-underline {
+    width: 260px;
+  }
+
+  .qb-btn {
+    min-width: 100%;
+    padding: 16px 0;
+    font-size: 1.05rem;
+  }
+}
+
+ /* formulario */
+
+.form-section{
+  background: #0b0b0b;
+  padding: 120px 0;
+}
+
+.form-container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 60px;
+  align-items: start; /* para que no se vea raro */
+}
+
+/* IZQUIERDA alineada */
+.form-left{
+  text-align: left;
+}
+
+/* ===== FORM TITLE (DINÁMICO) ===== */
+.form-title{
+  margin: 0 0 18px;
+  text-align: left !important;
+  text-transform: uppercase;
+  line-height: 1.08;
+  /* ayuda a que el corte de líneas se vea más natural */
+  text-wrap: balance;
+}
+
+.form-title .form-line{
+  display: block;
+}
+
+.form-white{
+  color: #fff !important;
+  font-weight: 400 !important;
+}
+
+.form-accent{
+  background: linear-gradient(to right, #f1a245, #e3b149);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: #f1a245 !important;
+}
+
+/* ✅ EVITA que se peguen palabras como PROPIEDADQUE */
+.form-title .form-white + .form-white,
+.form-title .form-white + .form-accent,
+.form-title .form-accent + .form-white,
+.form-title .form-accent + .form-accent{
+  margin-left: .20em;
+}
+
+/* subtítulo con aire */
+.form-sub{
+  margin: 0 0 22px;
+  color: rgba(255,255,255,0.72) !important;
+}
+
+
+/* CONTACTO */
+.form-contact{
+  display: grid;
+  gap: 12px;
+  margin: 0 0 22px;
+}
+
+
+.form-contact-item{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.85);
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.form-contact-icon{
+  background: linear-gradient(135deg, #f1a245, #e3b149);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: #f1a245;
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+/* tabs */
+.form-tabs{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.form-tab{
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.85);
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: 180ms ease;
+}
+
+.form-tab:hover{
+  border-color: rgba(245,197,66,0.6);
+  color: #fff;
+}
+
+.form-tab.active{
+  border-color: #F5C542;
+  box-shadow: 0 0 0 4px rgba(245,197,66,0.18);
+  color: #fff;
+}
+
+/* DERECHA: sin tarjeta */
+.form-right{
+  text-align: left;
+}
+
+.form-fields{
+  width: 100%;
+}
+
+/* GRID del form */
+.form-section .qb-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+/* inputs SOLO contorno */
+.form-section .qb-input,
+.form-section .qb-textarea{
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-size: 1rem;
+  line-height: 1.2;
+
+  background: transparent; /* <- clave */
+  border: 1px solid rgba(255,255,255,0.24);
+  color: #fff;
+
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.form-section .qb-input{
+  height: 52px;
+}
+
+.form-section .qb-textarea{
+  min-height: 120px;
+  resize: vertical;
+  margin-bottom: 14px;
+}
+
+.form-section .qb-input::placeholder,
+.form-section .qb-textarea::placeholder{
+  color: rgba(255,255,255,0.45);
+}
+
+.form-section .qb-input:focus,
+.form-section .qb-textarea:focus{
+  border-color: linear-gradient(to right, #f1a245, #e3b149) !important;
+  box-shadow: 0 0 0 4px rgba(245,197,66,0.14);
+}
+
+/* botón enviar */
+.form-section .qb-submit{
+  width: 100%;
+  background: linear-gradient(to right, #f1a245, #e3b149) !important;
+  border: none;
+  padding: 16px 18px;
+  border-radius: 14px;
+  font-weight: 900;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+/* MAPA abajo */
+.form-map-wrap{
+  max-width: 1200px;
+  margin: 34px auto 0;
+  padding: 0 24px;
+}
+
+.form-map{
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.form-map iframe{
+  width: 100%;
+  height: 320px;
+  border: 0;
+  display: block;
+}
+
+/* responsive */
+@media (max-width: 980px){
+  .form-container{
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .form-title{
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 720px){
+  .form-section .qb-row{
+    grid-template-columns: 1fr;
+  }
+
+  .form-map iframe{
+    height: 280px;
+  }
+}
+
+/* ====== SELECT DARK (para que se vean las opciones) ====== */
+.form-section select.qb-input,
+.form-section .qb-input select{
+  background: rgba(0,0,0,0.25);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.22);
+}
+
+/* el dropdown (opciones) */
+.form-section select.qb-input option,
+.form-section select option{
+  background: #111;   /* fondo oscuro */
+  color: #fff;        /* texto blanco */
+}
+
+/* por si el navegador mete estilos raros */
+.form-section select.qb-input:focus{
+  outline: none;
+  border-color: rgba(245,197,66,0.9);
+  box-shadow: 0 0 0 4px rgba(245,197,66,0.14);
+}
+
+/* ============================
+   BOOTSTRAP OVERRIDES (DARK FORM)
+   ============================ */
+
+.form-section .form-control,
+.form-section .form-select{
+  background: transparent !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.24) !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+}
+
+/* placeholders */
+.form-section .form-control::placeholder{
+  color: rgba(255,255,255,0.45) !important;
+}
+
+/* focus */
+.form-section .form-control:focus,
+.form-section .form-select:focus{
+  border-color: rgba(245,197,66,0.95) !important;
+  box-shadow: 0 0 0 4px rgba(245,197,66,0.14) !important;
+  outline: none !important;
+}
+
+/* IMPORTANT: dropdown options visibles (Windows/Chrome) */
+.form-section .form-select{
+  color-scheme: dark;
+}
+
+/* fondo del dropdown */
+.form-section .form-select option{
+  background: #111 !important;
+  color: #fff !important;
+}
+
+/* si bootstrap te aplasta altura */
+.form-section .form-control,
+.form-section .form-select{
+  min-height: 52px;
+}
+
+
+/* =========================
+   TESTIMONIOS / RESEÑAS
+========================= */
+.reviews-section{
+  background: #ffffff;
+  padding: 110px 0;        
+  overflow-x: hidden;       
+}
+
+.reviews-title-wrap{
+  max-width: 1200px;
+  margin: 0 auto 42px;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.reviews-title{
+  text-align: center;
+  margin: 0;
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  
+}
+
+.reviews-title-accent{
+  background: linear-gradient(to right, #f1a245, #e3b149);
+  
+  /* Truco para que el degradado se aplique solo a las letras */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  /* Fallback por si el navegador no soporta degradado de texto */
+  color: #f1a245;
+}
+.reviews-title-rest{ color: #0b0b0b; }
+
+.reviews-container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 60px;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.reviews-left{
+  text-align: left;
+  margin-left: -36px; 
+}
+
+.reviews-question{
+  margin: 0;
+  font-size: 2.05rem;
+  font-weight: 400;
+  letter-spacing: 0.01em; /* un pelín menos para que “quepa” mejor */
+  text-transform: uppercase;
+  color: #3e3e3e !important;
+  line-height: 1.28;
+  max-width: 520px !important;
+  
+}
+
+.reviews-right{
+  overflow: hidden;        
+}
+
+/* ===== Marquee (JS loop) ===== */
+.marquee{
+  width: 100%;
+  overflow: hidden;          
+}
+
+.marquee__track{
+  display: flex;
+  flex-wrap: nowrap;        
+  align-items: stretch;
+  gap: var(--marquee-gap, 22px);
+  will-change: transform;
+  transform: translate3d(0,0,0);
+}
+
+.marquee__half{
+  display: flex;
+  flex-wrap: nowrap;        
+  gap: var(--marquee-gap, 22px);
+}
+
+.marquee__item{
+  display: flex;
+}
+
+.privacy-container {
+  margin-bottom: 20px; /* separa del botón */
+}
+
+.privacy-label {
+  color: white;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.privacy-text {
+  font-size: 12px;
+  color: white;
+  margin: 0;
+}
+
+.whatsapp-float {
+  position: fixed;
+  right: clamp(12px, 3vw, 20px);
+  bottom: clamp(15px, 4vw, 25px);
+  width: clamp(48px, 8vw, 60px);
+  height: clamp(48px, 8vw, 60px);
+  background-color: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  z-index: 999;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp-icon {
+  width: clamp(24px, 4vw, 32px);
+  height: clamp(24px, 4vw, 32px);
+}
+@media (max-width: 480px) {
+  .whatsapp-float {
+    right: 14px;
+    bottom: 18px;
+  }
+}
+
+/* ===== Card reseña ===== */
+.review-card{
+  width: 320px;
+  min-height: 168px;
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 18px;
+  background: #fff;
+  padding: 16px 16px 14px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+  box-sizing: border-box;
+}
+
+.review-top{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.review-avatar{
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid rgba(0,0,0,0.10);
+}
+
+.review-avatar img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.review-meta{
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.review-title{
+  font-weight: 800;
+  color: #0b0b0b;
+  font-size: 0.98rem;
+  line-height: 1.15;
+}
+
+.review-stars{
+  color: #F5C542;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.review-text{
+  color: rgba(0,0,0,0.70);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* responsive */
+@media (max-width: 980px){
+  .reviews-container{
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+  .reviews-title{
+    font-size: 2.6rem;
+  }
+  .reviews-question{
+    max-width: 100%;
+  }
+  .review-card{
+    width: 300px;
+  }
+}
+
+@media (max-width: 520px){
+  .review-card{
+    width: 260px;
+  }
+}
+
+
+/* ===========================
+   PARCHE RESPONSIVE (SUAVE)
+   - No cambia desktop
+   - Solo arregla tablet/móvil sin romper estructura
+=========================== */
+
+@media (max-width: 1024px) {
+
+  /* Navbar: logo y spacing */
+  .nav-home-logo { height: 60px; }
+
+  /* Hero: que no se ahogue */
+  .home-hero-content {
+    padding-bottom: 90px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .home-hero-title { font-size: 2.8rem; }
+  .home-hero-subtitle { font-size: 1rem; }
+
+  /* Nosotros: layout a una columna */
+  .about-layout {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  .about-left,
+  .about-right {
+    padding: 0 !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Stats: evita desbordes */
+  .company-stats { grid-template-columns: 1fr; gap: 20px; }
+  .stat-card:not(:last-child)::after { display: none; }
+
+  /* Proyectos collage: layout responsive sin choque */
+  .proyectos-grid-collage {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "info info"
+      "img1 img2"
+      "img1 img3"
+      "img4 img4";
+    grid-auto-rows: 200px;
+    gap: 20px;
+  }
+
+  .proyectos-info-block { padding-right: 0; margin-bottom: 30px; }
+  .proyectos-titulo { font-size: 2.8rem; }
+
+  /* Proceso: apila */
+  .proceso-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .proceso-image { height: 360px; }
+
+  /* ✅ FORM: mantiene tu estructura, solo apila en tablet */
+  .form-container {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  /* Inputs: que no se vean apretados */
+  .form-section .qb-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-map iframe { height: 280px; }
+}
+
+/* Móvil */
+@media (max-width: 600px) {
+
+  .home-hero-title { font-size: 1.9rem; }
+  .home-hero-subtitle { font-size: 0.95rem; }
+
+  .navbar-invest-btn {
+    margin: 10px 0 0 0;
+    width: 85%;
+    text-align: center;
+  }
+
+  /* Proyectos: en móvil ya es columna */
+  .proyectos-grid-collage {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .proyecto-card { height: 340px; }
+
+  /* Form: aire en mobile */
+  .form-section { padding: 90px 0; }
+  .form-map iframe { height: 260px; }
+}
+/* ===========================
+   PARCHE REVIEWS (fix móvil/tablet)
+   - Si el marquee/JS falla o se desajusta, los cards SIEMPRE se ven
+=========================== */
+
+@media (max-width: 1024px) {
+
+  /* Asegura que exista espacio y no “colapse” */
+  .reviews-section{
+    overflow: visible !important;
+  }
+
+  .reviews-container{
+    grid-template-columns: 1fr !important;
+    gap: 26px !important;
+  }
+
+  .reviews-left{
+    margin-left: 0 !important;
+    text-align: center !important;
+  }
+
+  /* ✅ Fallback: apagamos el efecto marquee para que NO se vaya a -9999px */
+  .marquee{
+    overflow-x: auto !important;      /* si quieres swipe */
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+  }
+
+  .marquee__track{
+    transform: none !important;       /* clave */
+    will-change: auto !important;
+    flex-wrap: wrap !important;       /* que se vean en filas */
+    gap: 16px !important;
+  }
+
+  .marquee__half{
+    flex-wrap: wrap !important;
+    gap: 16px !important;
+  }
+
+  .marquee__item{
+    flex: 0 0 auto;
+  }
+
+  .review-card{
+    width: min(320px, 88vw) !important;
+    min-height: 168px;
+  }
+}
+
+/* Móvil extra */
+@media (max-width: 520px){
+  .reviews-title{ font-size: 2.2rem !important; }
+  .reviews-question{ font-size: 1.4rem !important; text-align: center !important; }
+  .review-card{ width: 86vw !important; }
+}
+
+

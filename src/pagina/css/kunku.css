@@ -1,0 +1,514 @@
+:root {
+  --gold: #dfb05b;
+  --dark: #111111;
+  /* Nuevo color para el texto del hero, muy claro */
+  --hero-text-color: #f8f9fa; 
+}
+
+.kunku-landing {
+  overflow-x: hidden;
+  font-family: 'Montserrat', sans-serif; /* Asegúrate de que esta fuente esté importada en tu HTML */
+}
+
+.text-gold { color: var(--gold); }
+.bg-dark { background-color: var(--dark) !important; }
+.z-index-2 { z-index: 2; }
+.tracking-widest { letter-spacing: 0.4em; }
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  height: 90vh;
+  /* Quitamos el 'background' anterior y dejamos solo las propiedades de posición */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--hero-text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* El resto del CSS (overlay, títulos, etc.) se queda igual */
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Ajusta este valor si quieres que la imagen se vea más clara o oscura */
+}
+.hero-subtitle {
+  letter-spacing: 0.5em;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  color: var(--gold); /* Este sí mantiene el color dorado */
+}
+
+.hero-title {
+  font-size: clamp(3.5rem, 12vw, 8.5rem);
+  font-weight: 800;
+  margin: 0;
+  line-height: 1;
+  /* color: var(--hero-text-color); <--- ya se define en .hero-section */
+}
+
+.hero-location,
+.hero-tagline {
+  /* color: var(--hero-text-color); <--- ya se define en .hero-section */
+  font-weight: 300; /* Ligeramente más delgado como en el ejemplo */
+  font-size: 1.5rem; /* Ajuste para San Benito */
+}
+.hero-tagline {
+    font-size: 1.1rem; /* Ajuste para Vive a unos pasos del mar */
+}
+
+
+.btn-gold {
+  background: var(--gold);
+  border: none;
+  font-weight: 700;
+  color: #000;
+  padding: 12px 30px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-gold:hover {
+  background: var(--gold-dark);
+}
+
+/* Nuevo estilo para el botón de "Agendar Asesoría" para que la línea sea más oscura sobre fondo claro */
+.btn-outline-light-dark-bg {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Un borde blanco translúcido */
+    color: white;
+    font-weight: 700;
+    padding: 12px 30px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-outline-light-dark-bg:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.7);
+    color: white;
+}
+
+
+/* --- AMENIDADES COMPACTAS --- */
+.section-title-compact {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.amenity-card-mini {
+  background-color: white;
+  border-radius: 12px;
+  padding: 15px;
+  width: 140px; /* Tamaño fijo para forzar que sean pequeñas */
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+  border: 1px solid #f0f0f0;
+  margin: 0 auto;
+  transition: transform 0.2s ease;
+}
+
+.amenity-card-mini:hover {
+  transform: translateY(-5px);
+}
+
+.amenity-icon-small {
+  width: 55px;
+  height: 55px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.amenity-text-small {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #333;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Ajuste para que en Desktop se vean alineadas una tras otra */
+@media (min-width: 992px) {
+  .amenities-section .row {
+    flex-wrap: nowrap; /* Evita que salten de línea en pantallas grandes si quieres una sola fila */
+    overflow-x: auto; /* Permite scroll si hay demasiadas, aunque con col-lg-auto se ajustan */
+    padding-bottom: 10px;
+  }
+}
+
+.why-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #111;
+}
+
+.why-subtitle {
+  font-style: italic;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.why-paragraph {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #333;
+  font-weight: 400;
+  padding: 0 10px;
+}
+
+/* Estilo para los puntos dorados separadores */
+.text-gold.mx-2 {
+  font-weight: bold;
+  font-size: 1.4rem;
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .why-paragraph {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+}
+/* Lista Ubicación */
+.custom-list-container p {
+    color: #333; /* Color de texto para esta sección */
+    font-size: 1.15rem; /* Ajuste del tamaño de fuente */
+}
+
+
+.location-list li {
+  display: flex;
+  align-items: center;
+  color: #ccc; /* Texto ligeramente más claro para la lista de ubicación */
+}
+
+.map-marker-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--gold);
+  font-size: 3.5rem;
+}
+
+/* --- SECCIÓN UBICACIÓN (ESTILO DARK) --- */
+.kunku-location--dark {
+  background-color: #111;
+  color: white;
+  padding: 80px 0;
+}
+
+.kunku-container-location {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.kunku-location__title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 25px;
+}
+
+.kunku-location__p {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.kunku-location__list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.kunku-location__list li {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+/* --- CONTENEDOR DEL MAPA --- */
+.kunku-map__frame {
+  height: 450px;
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  border: 1px solid #333;
+}
+
+/* Personalización de Leaflet para que no desentone */
+.kunku-dark-map {
+  filter: grayscale(0.2) contrast(1.1); /* Suaviza los colores del mapa */
+}
+
+/* Responsivo */
+@media (max-width: 992px) {
+  .kunku-container-location {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .kunku-location__list li {
+    justify-content: center;
+  }
+  
+  .kunku-map__frame {
+    height: 350px;
+  }
+  
+  .kunku-location__title {
+    font-size: 2.5rem;
+  }
+}
+
+/* --- SECCIÓN ESTILO DE VIDA --- */
+.lifestyle-image-section {
+  height: 65vh; /* Altura de la sección */
+  overflow: hidden; /* Asegura que la imagen no se salga */
+}
+
+.lifestyle-background-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Importante para que la imagen cubra todo y mantenga su proporción */
+  z-index: 0; /* Asegura que esté por debajo del overlay y el texto */
+}
+
+.lifestyle-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45); /* Capa oscura para que el texto blanco resalte */
+  z-index: 1;
+}
+
+.lifestyle-image-section .container {
+  z-index: 2; /* Asegura que el texto esté por encima de todo */
+  color: white; /* Color del texto dentro de esta sección */
+}
+
+.lifestyle-image-section h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Tamaño responsivo */
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3); /* Sombra al texto para más lujo */
+}
+
+/* --- SECCIÓN MASTER PLAN HERO --- */
+.masterplan-hero-container {
+  position: relative;
+  width: 100%;
+  height: 85vh; /* Altura de impacto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.masterplan-hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.masterplan-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Degradado para oscurecer la base y resaltar badges */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+  z-index: 2;
+}
+
+.masterplan-hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: white;
+}
+
+.masterplan-top-label {
+  color: #d3ae64; /* Color solicitado */
+  letter-spacing: 4px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.masterplan-hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  margin-bottom: 40px;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+/* Badges estilo Glassmorphism (basado en tu imagen image_99fa5d.jpg) */
+.masterplan-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.masterplan-badge-pill {
+  background: rgba(255, 255, 255, 0.15); /* Efecto cristal */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 22px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.masterplan-badge-pill:hover {
+  background: rgba(211, 174, 100, 0.2); /* Hover con tu color */
+  border-color: #d3ae64;
+  transform: translateY(-3px);
+}
+
+.badge-icon {
+  font-size: 1.1rem;
+}
+
+.badge-text {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* Botón con colores #d3ae64 y #deac4a */
+.btn-masterplan-download {
+  background: linear-gradient(45deg, #d3ae64, #deac4a);
+  border: none;
+  color: white;
+  padding: 18px 45px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  box-shadow: 0 10px 25px rgba(222, 172, 74, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-masterplan-download:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(222, 172, 74, 0.5);
+  filter: brightness(1.1);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .masterplan-hero-container { height: 70vh; }
+  .masterplan-badge-pill { width: 100%; justify-content: center; }
+}
+/* --- SECCIÓN DETALLADA --- */
+.kunku-amenities-detailed {
+  background-color: #ffffff;
+  padding: 100px 0; /* Sección con buen aire */
+}
+
+.section-title-main {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+/* Imagen Hero Contenida */
+.kunku-hero-mini {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.kunku-rounded-shadow {
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  width: 100%;
+  height: 400px; /* Altura fija para que no sea gigante */
+  object-fit: cover;
+}
+
+/* Fila de Características Alineadas */
+.kunku-features-inline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.kunku-feat-pill {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 15px 25px;
+  border-radius: 50px; /* Estilo píldora */
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+  transition: all 0.3s ease;
+}
+
+.kunku-feat-pill:hover {
+  border-color: #dfb05b;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(223, 176, 91, 0.12);
+}
+
+.kunku-feat-icon {
+  color: #dfb05b;
+  font-size: 1.3rem;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.kunku-feat-text {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Ajuste Móvil */
+@media (max-width: 768px) {
+  .section-title-main { font-size: 2.2rem; }
+  .kunku-rounded-shadow { height: 250px; }
+  .kunku-feat-pill { width: 100%; justify-content: center; }
+}
+

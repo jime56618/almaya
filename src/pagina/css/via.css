@@ -1,0 +1,1091 @@
+.via-page {
+  font-family: "Poppins", sans-serif;
+  color: #0f172a;
+  background: #ffffff;
+}
+
+/* Container */
+.via-container {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+}
+
+/* Titles & text */
+.via-h2 {
+  font-size: clamp(1.4rem, 2vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.75rem 0;
+}
+
+.via-p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.via-muted {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* Buttons */
+.via-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.05rem;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+  user-select: none;
+}
+
+.via-btn:active {
+  transform: translateY(1px);
+  opacity: 0.95;
+}
+
+.via-btn--primary {
+  background: linear-gradient(135deg, #f1a245, #e3b149);
+  color: #000000;
+}
+
+.via-btn--ghost {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+/* Badge */
+.via-badge {
+  display: inline-flex;
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+
+/* ============================================================
+   HERO (Google Ads / Venta) — CSS
+   Mantiene tu base, solo agrega/ajusta clases del rediseño
+   ============================================================ */
+.via-hero {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  overflow: hidden;
+}
+
+.via-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.via-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.85) 100%);
+}
+
+.via-hero__content {
+  position: relative;
+  z-index: 5;
+  width: min(1000px, 92%);
+}
+
+/* Texto superior: Sin recuadro, más espaciado y dorado */
+.via-hero__top-text {
+  font-size: 0.8rem;
+  letter-spacing: 5px;
+  color: #f1a245;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+/* Título: Más imponente */
+.via-hero__title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
+}
+
+.via-hero__subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  opacity: 0.9;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+
+/* TARJETA DE PRECIO: Más ancha y con Glassmorphism oscuro */
+.via-hero__price-card {
+  background: rgba(20, 20, 20, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid  #f1a1453c;;
+  border-radius: 12px;
+  /* Reducimos padding y ancho */
+  padding: 15px 30px; 
+  width: 100%;
+  max-width: 440px; /* Antes era 600px, ahora es mucho más estético */
+  margin: 0 auto 2rem auto;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+.price-label {
+  display: block;
+  font-size: 0.85rem;
+  color: #f1a245;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+}
+
+.price-main {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 5px;
+}
+
+.price-amount { 
+  /* Reducimos el tamaño máximo de 5.5rem a 3.8rem */
+  font-size: clamp(2.5rem, 5vw, 3.8rem); 
+  font-weight: 700; 
+  color: #fff;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+.price-symbol { 
+  font-size: 1.8rem; /* Antes 2.5 */
+  font-weight: 300; 
+}
+
+.price-currency { 
+  font-size: 1rem; /* Antes 1.4 */
+  font-weight: 700; 
+  opacity: 0.5; 
+}
+
+.price-features {
+  font-size: 0.8rem; /* Más pequeño para que el cuadro se vea "limpio" */
+  opacity: 0.7;
+  margin-top: 10px;
+  padding-top: 10px;
+  
+}
+/* Botones */
+.via-hero__actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.btn-reserve {
+  background: #f1a245;
+  color: #000;
+  padding: 16px 40px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1rem;
+  box-shadow: 0 10px 20px rgba(241, 162, 69, 0.2);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #fff;
+  padding: 16px 40px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  border: 1px solid rgba(255,255,255,0.4);
+}
+
+.via-hero__footer {
+  font-size: 0.9rem;
+  color: #f1a245;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.via-bolt { filter: drop-shadow(0 0 5px #f1a245); }
+
+@media (max-width: 600px) {
+  .via-hero__price-card { padding: 25px 30px; width: 100%; }
+  .via-hero__actions { flex-direction: column; align-items: center; }
+  .btn-reserve, .btn-outline { width: 100%; max-width: 300px; }
+  .price-amount { font-size: 2.8rem; }
+}
+/* --- SECCIÓN UBICACIÓN (PREMIUM DARK) --- */
+.location--dark {
+  padding: 100px 0;
+  /* El degradado exacto de tu ejemplo */
+  background: radial-gradient(
+    circle at 80% 50%, 
+    #1a1a1a 0%, 
+    #0d0d0d 100%
+  ) !important;
+  
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+/* La textura de fibra de carbono aplicada a esta sección */
+.location--dark::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Textura de fibra de carbono para ese look técnico/premium */
+  background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+  opacity: 0.1; /* Subí un poco el 0.05 para que por fin notes la textura */
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Aseguramos que el contenido esté arriba de la textura */
+.via-container-location {
+  position: relative;
+  z-index: 2;
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+
+
+.location__title {
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.hl--yellow {
+  background: linear-gradient(135deg, #f1a245, #e3b149);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.location__p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #d1d1d1;
+  margin-bottom: 35px;
+  max-width: 500px;
+}
+
+.location__list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 45px;
+}
+
+.location__list li {
+  margin-bottom: 15px;
+  padding-left: 30px;
+  position: relative;
+  font-size: 1rem;
+  color: #b0b0b0;
+}
+
+.location__list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #f1a245;
+  font-weight: bold;
+}
+
+.map__frame.premium--shadow {
+  height: 380px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(241, 162, 69, 0.3);
+  box-shadow: 0 0 40px rgba(241, 162, 69, 0.1);
+}
+
+.dark-map .leaflet-tile-container {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+.leaflet-tooltip {
+  background: linear-gradient(135deg, #f1a245, #e3b149) !important;
+  color: #000 !important;
+  border: none !important;
+  font-weight: bold !important;
+  border-radius: 2px !important;
+}
+
+.via-btn-maps {
+  background: linear-gradient(135deg, #f1a245, #e3b149);
+  color: #000;
+  padding: 18px 40px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.via-btn-maps:hover {
+  transform: translateY(-5px);
+  background: #ffffff;
+}
+
+@media (max-width: 900px) {
+  .via-container-location {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .location__title { font-size: 2.5rem; }
+  .map__frame.premium--shadow { height: 350px; }
+}
+
+
+
+.via-section--intro {
+  /* Reducimos de 140px a 80px para que respire sin alejarse demasiado */
+  padding: 80px 0 60px 0; 
+  background: #f5f3ef;
+  text-align: left; /* Alineación a la izquierda */
+}
+
+.via-h2 {
+  font-size: 2rem; /* Tamaño elegante, no gigante */
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.via-p {
+  font-size: 1.1rem;
+  color: #444;
+  max-width: 700px; /* Limitamos ancho para mejor lectura al estar a la izquierda */
+  line-height: 1.6;
+}
+/* --- INFRAESTRUCTURA (IMAGEN LARGA Y ANIMACIONES) --- */
+/* --- INFRAESTRUCTURA (Ajuste de ancho de imagen y color crema) --- */
+.via-infra-section {
+  background: #f5f3ef; /* CAMBIO: Color crema aplicado */
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+}
+
+.via-infra-grid {
+  display: grid;
+  /* CAMBIO: La imagen ocupa el 40% (0.8fr) y el texto el 60% (1.2fr) */
+  grid-template-columns: 0.8fr 1.2fr; 
+  width: 100%;
+}
+
+.via-infra-col-img {
+  height: 100%;
+  min-height: 600px; /* Mantiene el largo que pediste */
+}
+
+.via-infra-full-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.via-infra-col-text {
+  padding: 80px 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.via-infra-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  line-height: 1.1;
+}
+
+/* El resto de tus estilos (via-infra-hl, via-infra-list, etc.) se mantienen igual */
+
+.via-infra-hl {
+  color: #f1a245;
+  background: linear-gradient(135deg, #f1a245, #e3b149);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.via-infra-line-divider {
+  width: 60px;
+  height: 4px;
+  background: #f1a245;
+  margin: 20px 0 45px 0;
+}
+
+/* --- TARJETAS CON ANIMACIÓN --- */
+.via-infra-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.via-infra-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: white;
+  padding: 22px 28px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  
+  /* Estado inicial para animación */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.7s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+/* Disparador de animación */
+.active-animation .via-infra-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.via-infra-icon-box {
+  font-size: 1.8rem;
+  color: #f1a245;
+  display: flex;
+}
+
+.via-infra-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .via-infra-grid { grid-template-columns: 1fr; }
+  .via-infra-col-img { height: 400px; order: 2; }
+  .via-infra-col-text { order: 1; padding: 60px 5%; }
+}
+
+/* --- MASTER PLAN (FONDO DE 3 COLUMNAS) --- */
+.via-master-bg-section {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background: #000; /* Fondo base por si las imágenes tardan en cargar */
+}
+
+/* Contenedor de las 3 imágenes */
+.via-master-columns {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+  z-index: 0;
+}
+
+.via-master-col {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-right: 1px solid rgba(255,255,255,0.1); /* Línea divisoria sutil */
+}
+
+.via-master-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Opcional: puedes añadir un ligero zoom o filtro aquí */
+  filter: brightness(0.8);
+}
+
+.via-master-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.7)
+  );
+  z-index: 1;
+}
+
+.via-master-bg-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 40px;
+  color: white;
+}
+
+.via-master-bg-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .via-master-columns {
+    grid-template-columns: 1fr; /* En móvil se apilan o puedes mostrar solo una */
+  }
+  .via-master-col:nth-child(2), 
+  .via-master-col:nth-child(3) {
+    display: none; /* Mejor mostrar solo la principal en móviles para no saturar */
+  }
+  .via-master-bg-section {
+    height: 60vh;
+  }
+}
+.via-path-section {
+  background-color: #f5f3ef; /* Fondo cremita */
+  padding: 100px 0;
+  width: 100%;
+}
+
+.via-path-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.via-path-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.via-path-h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.via-path-alt {
+  color: #f1a245; /* Dorado/Naranja de tu paleta */
+}
+
+/* --- GRID ALINEADO --- */
+.via-path-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  align-items: stretch; /* OBLIGA A MISMO TAMAÑO */
+  margin-bottom: 50px;
+}
+
+.via-path-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-top: 20px; /* Espacio para el número flotante */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.is-active .via-path-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- NÚMERO FLOTANTE (Badge) --- */
+.via-path-dot {
+  width: 35px;
+  height: 35px;
+  background: #f1a245;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(241, 162, 69, 0.3);
+}
+
+.via-path-number {
+  color: white;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+/* --- TARJETAS (IGUALES) --- */
+.via-path-card {
+  background: white;
+  padding: 40px 25px 30px;
+  border-radius: 15px;
+  text-align: center;
+  width: 100%;
+  height: 100%; /* Para que el grid las estire */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  border: 1px solid rgba(0,0,0,0.02);
+}
+
+.via-path-icon {
+  font-size: 2.2rem;
+  color: #f1a245;
+  margin-bottom: 20px;
+}
+
+.via-path-card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+}
+
+.via-path-card-desc {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* --- BOTÓN CENTRADO --- */
+.via-path-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.via-btn--gold {
+  background: #f1a245;
+  color: white;
+  padding: 18px 45px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+.via-btn--gold:hover {
+  background: #e39235;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 1024px) {
+  .via-path-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .via-path-grid { grid-template-columns: 1fr; }
+}
+/* ============================================================
+   PARCHE RESPONSIVE PARA VÍA SERENA (Mobile First/Adaptive)
+   ============================================================ */
+
+@media (max-width: 1024px) {
+    /* 1. Ajuste General de Contenedores */
+    .via-container-location,
+    .via-infra-grid {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+    }
+
+    /* 2. Corrección de la Sección Hero */
+    .via-hero {
+        min-height: 80vh !important;
+    }
+    .via-hero__title {
+        font-size: clamp(2.5rem, 12vw, 4rem) !important;
+    }
+    .via-hero__info-card {
+        border-radius: 20px !important;
+        width: 90% !important;
+        padding: 1.2rem !important;
+        animation: cardIn 0.8s ease forwards !important;
+    }
+
+    /* 3. Sección Infraestructura (Imagen y Lista) */
+    .via-infra-col-img {
+        height: 350px !important;
+        min-height: auto !important;
+        order: 2; /* La imagen pasa abajo en móvil */
+    }
+    .via-infra-col-text {
+        order: 1; /* El texto pasa arriba */
+        padding: 40px 5% !important;
+        text-align: center;
+    }
+    .via-infra-line-divider {
+        margin: 15px auto 30px auto !important;
+    }
+    .via-infra-item {
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+    /* 4. Sección de Servicios Adicionales (El Camino Curvo) */
+    .via-path-wrapper {
+        padding: 40px 0 !important;
+    }
+    .via-path-svg {
+        display: none !important; /* El SVG curvo no funciona en vertical */
+    }
+    .via-path-grid {
+        grid-template-columns: 1fr !important; /* Una sola columna */
+        gap: 25px !important;
+    }
+    .item-1, .item-2, .item-3, .item-4 {
+        margin-top: 0 !important; /* Quitamos el efecto Zig-Zag */
+    }
+    .via-path-card {
+        width: 100% !important;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    .via-path-dot {
+        margin: 0 auto 15px auto !important; /* Centramos el número */
+    }
+    .via-path-h2 {
+        font-size: 2.2rem !important;
+    }
+
+    /* 5. Master Plan (Las 3 columnas) */
+    .via-master-columns {
+        grid-template-columns: 1fr !important;
+    }
+    .via-master-col:nth-child(2), 
+    .via-master-col:nth-child(3) {
+        display: none !important; /* Solo dejamos una imagen de fondo para no pesar */
+    }
+    .via-master-bg-section {
+        height: 70vh !important;
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas (iPhone SE, etc) */
+@media (max-width: 480px) {
+    .via-hero__ctaRow {
+        width: 100%;
+    }
+    .via-btn {
+        width: 100%;
+    }
+    .via-card__grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        text-align: left;
+        gap: 8px !important;
+    }
+    .location__title {
+        font-size: 2rem !important;
+    }
+}
+
+
+/* Infra subtítulo + CTA */
+.via-infra-sub {
+  margin: 0 0 22px 0;
+  color: #555;
+  line-height: 1.6;
+  max-width: 520px;
+}
+
+.via-infra-cta {
+  margin-top: 26px;
+}
+
+/* Nueva sección: Tipos de lote */
+.via-lotes-section {
+  padding: 70px 0 80px 0;
+  background: #ffffff;
+}
+
+.via-lotes-grid {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.via-lote-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  padding: 22px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.via-lote-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.via-lote-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.via-lote-price {
+  font-weight: 800;
+  color: #f1a245;
+}
+
+.via-lote-list {
+  margin: 0 0 18px 0;
+  padding-left: 18px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.via-lote-btn {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* CTA abajo en servicios */
+.via-path-cta {
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* Nota master */
+.via-master-bg-note {
+  margin-top: 14px;
+  opacity: 0.8;
+}
+
+/* Responsive lotes */
+@media (max-width: 900px) {
+  .via-lotes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Compactar sección servicios adicionales */
+.via-path-header{
+  margin: 0 auto 40px auto !important;
+  padding-top: 30px !important;
+}
+
+.via-path-wrapper{
+  padding: 55px 0 !important;
+}
+
+/* Cards más pequeñas */
+.via-path-card{
+  width: 190px !important;       /* antes 220 */
+  padding: 18px !important;      /* antes 25 */
+  border-radius: 16px !important;
+}
+
+.via-path-icon{
+  font-size: 1.6rem !important;  /* antes 2rem */
+  margin-bottom: 10px !important;
+}
+
+.via-path-card-title{
+  font-size: 1.05rem !important;
+  margin-bottom: 6px !important;
+}
+
+.via-path-card-desc{
+  font-size: 0.85rem !important;
+}
+
+/* Zig-zag menos agresivo */
+.item-1, .item-3 { margin-top: -70px !important; } /* antes -120 */
+.item-2, .item-4 { margin-top: 70px !important; }  /* antes 120 */
+
+/* Camino más “bajo” (menos aire) */
+.via-path-svg{
+  top: 52% !important;
+  opacity: 0.9;
+}
+
+
+
+/* Animación de la línea (camino) */
+.via-path-line {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200; /* oculto al inicio */
+  transition: stroke-dashoffset 1.8s ease-in-out;
+}
+
+.via-path-section.is-active .via-path-line {
+  stroke-dashoffset: 0; /* se dibuja al activarse */
+}
+
+/* Asegura estado inicial */
+.via-path-line{
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+}
+
+/* Animación (más confiable que transition) */
+@keyframes drawLine {
+  to { stroke-dashoffset: 0; }
+}
+
+.via-path-section.is-active .via-path-line{
+  animation: drawLine 1.8s ease-in-out forwards;
+}
+
+.via-path-svg path{
+  transition: none !important;
+}
+
+.via-form-section{
+  padding: 100px 0;
+  background: #0e0e0e;
+  color: #fff;
+}
+
+.via-form-box{
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.via-form-title{
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.via-form-sub{
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+.via-form{
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  color: #111;
+}
+
+.via-form-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.via-form input,
+.via-form select{
+  padding: 13px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.12);
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.via-form input:focus,
+.via-form select:focus{
+  border-color: #f1a245;
+  box-shadow: 0 0 0 3px rgba(241,162,69,0.15);
+}
+
+.via-phone{
+  display:flex;
+  align-items:center;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 12px;
+  overflow:hidden;
+}
+
+.via-phone span{
+  padding: 13px;
+  background: rgba(0,0,0,0.05);
+  font-weight: 700;
+}
+
+.via-phone input{
+  border:none !important;
+  outline:none;
+}
+
+.via-form-btn{
+  margin-top: 8px;
+  padding: 15px;
+  border-radius: 14px;
+  border:none;
+  font-weight: 900;
+  font-size: 1rem;
+  cursor:pointer;
+  background: linear-gradient(135deg, #f1a245, #e3b149);
+  color:#000;
+  transition: transform .15s ease, filter .15s ease;
+}
+
+.via-form-btn:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.via-form-legal{
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin-top: 8px;
+}
+
+@media (max-width: 600px){
+  .via-form-row{
+    grid-template-columns: 1fr;
+  }
+}
+
